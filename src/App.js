@@ -28,7 +28,11 @@ class App extends Component {
       <div className="App">
         <h1>Hiii</h1>
         <p>Welcome</p>
-        <button onClick={this.switchNameHandler.bind(this, 'Ashu')}>Switch name</button>
+        <button onClick={()=>{
+          return this.switchNameHandler('Anshu')
+          //dont use it use bind instead
+        }
+        }>Switch name</button>
         <Person name={this.state.persons[0].name}
          age={this.state.persons[0].age}
          passRefForHandler={this.switchNameHandler.bind(this, 'aparna')}
