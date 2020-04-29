@@ -24,7 +24,10 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex)=>{
-    const persons = this.state.persons;
+    //we should not pass dirctly the reference for orgnl source of array So:
+    // const persons = this.state.persons.slice();
+    //OR
+    const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   }
