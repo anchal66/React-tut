@@ -48,24 +48,28 @@ class App extends Component {
       padding: '8px',
       curson: 'pointer'
     }
+    let persons = null
+    if (this.state.showPerson) {
+      persons = (
+        <div >
+          <Person name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            click={this.switchNameHandler.bind(this, 'aparna')}
+            changed={this.nameChangedHandler}
+          >Hiii there!
+         </Person>
+          <Person name={this.state.persons[1].name}
+            age={this.state.persons[1].age} />
+        </div>
+      )
+    }
     return (
       <div className="App">
         <h1>Hiii</h1>
         <p>Welcome</p>
         <button style={style}
-          onClick={this.togglePersonsHandler}>Switch name</button>
-        {this.state.showPerson ? 
-          <div >
-            <Person name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-              click={this.switchNameHandler.bind(this, 'aparna')}
-              changed={this.nameChangedHandler}
-            >Hiii there!
-         </Person>
-            <Person name={this.state.persons[1].name}
-              age={this.state.persons[1].age} />
-          </div> : null
-        }
+          onClick={this.togglePersonsHandler}>Show Form</button>
+        {persons}
       </div>
     );
   }
