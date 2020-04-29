@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     persons: [
       { id: 'sqsq1', name: 'Avinash', age: 27 },
-      { id:'ggdgh1', name: 'Avi', age: 23 }
+      { id:'ggdgh1', name: 'Avi', age: 23 },
+      { id:'ggdgh12', name: 'Avinashhh', age: 28 },
     ],
     otherState: 'it will not be affectef unless is set',
     showPerson: false
@@ -70,10 +71,20 @@ class App extends Component {
       );
       style.backgroundColor = 'red';
     }
+
+    const classes =[]
+
+    if(this.state.persons.length <=2){
+      classes.push('red');
+    }
+    if(this.state.persons.length<=1){
+      classes.push('bold');
+    }
+
     return (
       <div className="App">
         <h1>Hiii</h1>
-        <p>Welcome</p>
+        <p className={classes.join(' ')}>Welcome</p>
         <button style={style}
           onClick={this.togglePersonsHandler}>Show Form</button>
         {persons}
