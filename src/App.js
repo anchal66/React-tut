@@ -7,20 +7,27 @@ class App extends Component {
   //If properties of state changes it reders the changed value in HTML too
   state = {
     persons: [
-      { name: 'Avinash', age: 27 },
-      { name: 'Avi', age: 23 }
+      { id: 'sqsq1', name: 'Avinash', age: 27 },
+      { id:'ggdgh1', name: 'Avi', age: 23 }
     ],
     otherState: 'it will not be affectef unless is set',
     showPerson: false
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { id:'srs4', name: event.target.value, age: 27 },
-        { id:'gfcd4', name: 'Avi', age: 3 }
-      ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p=>{
+      return p.id === id;
+    });
+
+    const person = {...this.state.persons[personIndex]};
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+
+    persons[personIndex] = person
+
+    this.setState({persons: persons});
   }
 
   deletePersonHandler = (personIndex)=>{
@@ -50,10 +57,11 @@ class App extends Component {
     let persons = null
     if (this.state.showPerson) {
       persons = (
-        <div >
+        <div>
           {this.state.persons.map((person, index)=>{
             return <Person key={person.id}
             click={()=>this.deletePersonHandler(index)}
+            changed={(event)=> this.nameChangedHandler(event, person.id)}
              name={person.name}
               age={person.age}/>
           })}
