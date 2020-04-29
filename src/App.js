@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium'
+import Radium, { StyleRoot } from 'radium'
 import Person from './Person/Person';
 
 class App extends Component {
@@ -9,19 +9,19 @@ class App extends Component {
   state = {
     persons: [
       { id: 'sqsq1', name: 'Avinash', age: 27 },
-      { id:'ggdgh1', name: 'Avi', age: 23 },
-      { id:'ggdgh12', name: 'Avinashhh', age: 28 },
+      { id: 'ggdgh1', name: 'Avi', age: 23 },
+      { id: 'ggdgh12', name: 'Avinashhh', age: 28 },
     ],
     otherState: 'it will not be affectef unless is set',
     showPerson: false
   }
 
   nameChangedHandler = (event, id) => {
-    const personIndex = this.state.persons.findIndex(p=>{
+    const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
-    const person = {...this.state.persons[personIndex]};
+    const person = { ...this.state.persons[personIndex] };
 
     person.name = event.target.value;
 
@@ -29,16 +29,16 @@ class App extends Component {
 
     persons[personIndex] = person
 
-    this.setState({persons: persons});
+    this.setState({ persons: persons });
   }
 
-  deletePersonHandler = (personIndex)=>{
+  deletePersonHandler = (personIndex) => {
     //we should not pass dirctly the reference for orgnl source of array So:
     // const persons = this.state.persons.slice();
     //OR
     const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
-    this.setState({persons: persons})
+    this.setState({ persons: persons })
   }
 
   togglePersonsHandler = () => {
@@ -65,39 +65,41 @@ class App extends Component {
     if (this.state.showPerson) {
       persons = (
         <div>
-          {this.state.persons.map((person, index)=>{
+          {this.state.persons.map((person, index) => {
             return <Person key={person.id}
-            click={()=>this.deletePersonHandler(index)}
-            changed={(event)=> this.nameChangedHandler(event, person.id)}
-             name={person.name}
-              age={person.age}/>
+              click={() => this.deletePersonHandler(index)}
+              changed={(event) => this.nameChangedHandler(event, person.id)}
+              name={person.name}
+              age={person.age} />
           })}
         </div>
       );
       style.backgroundColor = 'red';
-      style[':hover']={
+      style[':hover'] = {
         backgroundColor: 'blue',
         color: 'white'
       }
     }
 
-    const classes =[]
+    const classes = []
 
-    if(this.state.persons.length <=2){
+    if (this.state.persons.length <= 2) {
       classes.push('red');
     }
-    if(this.state.persons.length<=1){
+    if (this.state.persons.length <= 1) {
       classes.push('bold');
     }
 
     return (
-      <div className="App">
-        <h1>Hiii</h1>
-        <p className={classes.join(' ')}>Welcome</p>
-        <button style={style}
-          onClick={this.togglePersonsHandler}>Show Form</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hiii</h1>
+          <p className={classes.join(' ')}>Welcome</p>
+          <button style={style}
+            onClick={this.togglePersonsHandler}>Show Form</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
