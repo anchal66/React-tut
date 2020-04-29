@@ -3,7 +3,7 @@ import React from 'react';
 const person = (props)=> {
     return <div>
         <p>I m a {props.name} with age {props.age}</p>
-        <p>{props.children}</p>
+        <p onClick={props.passRefForHandler}>{props.children}</p>
         </div>
 };
 

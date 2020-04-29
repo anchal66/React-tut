@@ -13,11 +13,11 @@ class App extends Component {
     otherState: 'it will not be affectef unless is set'
   }
 
-  switchNameHandler = ()=>{
+  switchNameHandler = (newName)=>{
     // this.state.persons[0].name ='Anshu' //not work
     this.setState({
       persons:[
-        {name: 'AAnshu', age: 27},
+        {name: newName, age: 27},
         {name: 'Avi', age: 3}
       ]
     })
@@ -28,8 +28,12 @@ class App extends Component {
       <div className="App">
         <h1>Hiii</h1>
         <p>Welcome</p>
-        <button onClick={this.switchNameHandler}>Switch name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>Hiii there!</Person>
+        <button onClick={this.switchNameHandler.bind(this, 'Ashu')}>Switch name</button>
+        <Person name={this.state.persons[0].name}
+         age={this.state.persons[0].age}
+         passRefForHandler={this.switchNameHandler.bind(this, 'aparna')}
+         >Hiii there!
+         </Person>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
       </div>
     );
