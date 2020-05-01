@@ -25,7 +25,7 @@ const cockpit = (props) => {
     }
     return (
         <div>
-            <h1>Hiii</h1>
+            <h1>{props.title}HIiiiiiii</h1>
             <p className={classes.join(' ')}>Welcome</p>
             <StyledButton alt={props.showPerson}
                 onClick={props.clicked}>Show Form</StyledButton>
