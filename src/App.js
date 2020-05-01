@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled from 'styled-components;'
 import Person from './Person/Person';
+
+const StyledButton = styled.button`
+background-color: ${props=> props.alt ? 'red': 'green'};
+      color: white;
+      font: inherit;
+      border: 1px solid blue;
+      padding: 8px;
+      curson: pointer;
+      &:hover {
+        background-color: ${props=> props.alt ? 'salmon': 'lightgreen'};
+        color: black
+      }
+`;
 
 class App extends Component {
   // State can be used on class which extends compont we can use other property but state is specl property
@@ -48,18 +62,6 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      curson: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
     let persons = null
     if (this.state.showPerson) {
       persons = (
@@ -73,11 +75,12 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'blue',
-        color: 'white'
-      }
+
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'blue',
+      //   color: 'white'
+      // }
     }
 
     const classes = []
@@ -93,8 +96,8 @@ class App extends Component {
       <div className="App">
         <h1>Hiii</h1>
         <p className={classes.join(' ')}>Welcome</p>
-        <button style={style}
-          onClick={this.togglePersonsHandler}>Show Form</button>
+        <StyledButton alt={this.state.showPerson}
+        onClick={this.togglePersonsHandler}>Show Form</StyledButton>
         {persons}
       </div>
     );
