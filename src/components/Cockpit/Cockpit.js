@@ -1,5 +1,4 @@
 import React from 'react'
-import classes from './Cockpit.css'
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
