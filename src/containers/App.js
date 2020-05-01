@@ -28,9 +28,9 @@ class App extends Component {
     return state;
   }
 
-  componentWillMount(){
-    console.log('componentWillMount not often used')
-  }
+  // componentWillMount(){
+  //   console.log('componentWillMount not often used')
+  // }
 
   componentDidMount(){
     console.log('componentDidMount we add http reqs')
