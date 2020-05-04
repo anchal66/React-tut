@@ -18,7 +18,7 @@ const cockpit = (props) => {
     useEffect(()=>{
       console.log('USe effect: it is called everytime compont ceated or updats')
       //Can be use for http
-    })
+    },[props.persons]);
     const classes = []
     if (props.persons.length <= 2) {
       classes.push('red');
