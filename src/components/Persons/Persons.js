@@ -9,7 +9,12 @@ class Persons extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
     console.log('Perons shouldComponentUpdate')
-    return true;
+    if(nextProps.persons !== this.props.persons){
+      return true
+    }
+    return false;
+    //note persons caontains onlu pointer not object but ir will work ccoz in code we are craeting new o
+    //object of persons [... per] so new pointer is genetertaed
   }
    
   getSnapshotBeforeUpdate(prevProps, nextProps){
