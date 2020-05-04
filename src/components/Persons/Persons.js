@@ -18,7 +18,7 @@ class Persons extends Component {
   }
   
   componentDidUpdate(prevProps, nextProps, snapshot){
-    console.log('Perons componentDidUpdate');
+    console.log('Perons componentDidUpdate more used');
     console.log(snapshot)
   }
 

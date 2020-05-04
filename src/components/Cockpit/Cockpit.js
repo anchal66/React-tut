@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -15,6 +15,10 @@ background-color: ${props=> props.alt ? 'red': 'green'};
 `;
 
 const cockpit = (props) => {
+    useEffect(()=>{
+      console.log('USe effect: it is called everytime compont ceated or updats')
+      //Can be use for http
+    })
     const classes = []
     if (props.persons.length <= 2) {
       classes.push('red');
