@@ -18,7 +18,18 @@ const cockpit = (props) => {
     useEffect(()=>{
       console.log('USe effect: it is called everytime compont ceated or updats')
       //Can be use for http
+      return()=>{
+        console.log('Call after compent dies Cleanup Work')
+      }
     },[]);
+
+    useEffect(()=>{
+      console.log('USe effect 2: it is called everytime compont ceated or updats')
+      //Can be use for http
+      return()=>{
+        console.log('Can be used to cancel when other compont rerenders')
+      }
+    });
     const classes = []
     if (props.persons.length <= 2) {
       classes.push('red');

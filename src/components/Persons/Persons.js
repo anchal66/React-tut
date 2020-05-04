@@ -21,6 +21,9 @@ class Persons extends Component {
     console.log('Perons componentDidUpdate more used');
     console.log(snapshot)
   }
+  componentWillUnmount(){
+    console.log('componentWillUnmount for cleaup work')
+  }
 
   render(){
     console.log('Person JS Render')
