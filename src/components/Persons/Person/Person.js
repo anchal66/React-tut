@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Person.css'
 import styled from 'styled-components';
+import Auxillary from '../../../Auxillary'
 
 const StyledDiv = styled.div`
 width: 60%;
@@ -17,12 +18,16 @@ class Person extends Component {
     render() {
         console.log('PersonJS render')
         return (
-            // <div className="Person" style={style}>
+            <Auxillary>
+                {/* // <div className="Person" style={style}> */}
             <StyledDiv>
                 < p onClick={this.props.click} > I m a {this.props.name} with age {this.props.age}</p >
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name} />
             </StyledDiv>
+            </Auxillary>
+            
+
         )
     };
 }
